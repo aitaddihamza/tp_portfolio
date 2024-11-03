@@ -8,11 +8,273 @@
     */
 }
 
+:root {
+    --main-color: yellow;
+    --bg-color: #000;
+}
+
 html {
     font-family: monospace;
     font-size: 18px;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+   display: flex; 
+   align-items: center;
+   justify-content: space-between;
+   padding: 2rem 5rem;
+   background-color: var(--main-color);
+   position: relative;
+   z-index: 9;
+}
+
+header ul {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+}
+
+
+header > a {
+    font-size: 2rem;
+    color: var(--bg-color);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+header ul li a {
+    color: var(--bg-color);
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.desk-nav li a:hover,
+.mobile-nav li a:hover {
+    border-bottom: 4px solid #000;
+    transition: .3s;
+}
+
+.cv-button {
+    padding: .6rem;
+    font-size: 1rem;
+    background-color: var(--bg-color);
+    color: white;
+    border: none;
+    box-shadow: 5px 5px 5px black;
+    margin-left: .5rem;
+}
+
+.cv-button:hover {
+    transform: scale(1.1);
+    transition: .3s;
+}
+
+.mobile-nav {
+    display: none;
+}
+
+.menu-button {
+    width: 50px;
+    height: 50px;
+    background-color: var(--bg-color);
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: .2rem;
+    gap: .5rem;
+    transition: .3s;
+    display: none;
+}
+
+.menu-button div {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    transition: .3s;
+}
+
+main {
+    padding: 2rem 8rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: var(--bg-color);
+}
+
+#home {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-content: center;
+    gap: 1rem;
+    height: calc(100vh - 250px);
+}
+
+.home-text {
+    color: white;
+    text-align: justify;
+    line-height: 2;
+    padding-top: 4rem;
+    padding-right: 1rem;
+    position: relative;
+    top: -1000px;
+    animation: down .9s  ease-in forwards;
+}
+
+.home-text > h2 {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.home-icons {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.home-icons a{
+    font-size: 2rem;
+    color: var(--main-color);
+}
+
+.home-text a:hover {
+    transform: scale(1.1);
+    transition: .5s;
+} 
+
+.home-image img {
+    width: 100%;
+    border-radius: 20px;
+    position: relative;
+    right: -1000px;
+    animation: droit .9s ease-in-out forwards;
+}
+
+@keyframes down {
+    to { top: 0px; }
+}
+
+@keyframes droit {
+    to { right: 0px; }
+}
+
+#education {
+    height: calc(100vh - 200px);
+    background-color: var(--main-color);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.timeline {
+    flex: 1;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    row-gap: 1rem;
+}
+
+.timeline ul {
+    list-style: none;
+    text-align: justify;
+    width: 50%;
+    padding: 1rem;
+    line-height: 1.5;
+    border: 3px solid black;
+    position: relative;
+}
+
+.timeline ul div {
+    width: 50px;
+    height: 50px;
+    border: 2px solid black;
+    border-radius: 100%;
+    display: grid;
+    place-content: center;
+    font-weight: bold;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+}
+
+.timeline ul:nth-child(2) {
+    justify-self: center;
+    border-left: 5px solid black;
+}
+
+.timeline ul:last-child {
+    justify-self: end;
+    border-left: 5px solid black;
+}
+
+.timeline ul:first-child {
+    border-right: 5px solid black;
+}
+
+#education > h1 {
+    text-align: center; 
+    font-size: 2rem;
+}
+
+/* media queries */
+
+@media (max-width: 1150px) and (min-width: 881px) {
+    header {
+        padding: 1rem;
+    }     
+    header > a {
+        font-size: 1.6rem;
+    }
+    .desk-nav li a{
+        font-size: .8rem;
+    }
+    .cv-button {
+        font: .6rem;
+        padding: .4rem;
+    }
+}
+
+@media (max-width: 880px) {
+    header {
+        padding: 2rem;
+    }
+    .desk-nav {
+        display: none;
+    }
+    .mobile-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        position: absolute;
+        width: 100%;
+        background-color: var(--main-color);
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 2rem 0rem;
+        transition: .3s;
+        top: -1000px;
+    }
+    
+    .mobile-nav li a {
+        font-size: 1.3rem;
+    }
+
+    .menu-button {
+        display: flex;
+        z-index: 999;
+    }
 }
