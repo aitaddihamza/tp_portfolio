@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*
+        box-sizing: permet de changer comment le largeur ou l'hauteur d'un element HTML doit se calculer
+        par défaut n'incluent pas les marges les bordures ni les padding, pour cela il faut définir border-box 
+    */
+}
+
+html {
+    font-family: monospace;
+    font-size: 18px;
+}
+
+body {
+    height: 100vh;
+}
