@@ -3,20 +3,41 @@ const menu = document.querySelector('.mobile-nav');
 const children = menuButton.children
 const links = menu.children;
 
+let observer = new IntersectionObserver(entries => {
+    for(const entry of entries) {
+        console.log(entry.isIntersecting)
+        if(entry.isIntersecting && entry) {
+            if(entry.target.className == "phase1") {
+                entry.target.animate([
+                    {transform: 'translateX(500px)', opacity: 0},
+                    {transform: 'translateX(0px)', opacity: 1}
+                ], {
+                    duration: 600
+                }) 
+            }
+            else if(entry.target.className == "phase2") {
+                entry.target.animate([
+                    {transform: 'translateX(-500px)', opacity: 0},
+                    {transform: 'translateX(0px)', opacity: 1}
+                ], {
+                    duration: 600
+                }) 
+            }
+            else {
+                entry.target.animate([
+                    {opacity: 0, transform: 'translateY(-500px)'},
+                    {transform: 'translateY(0px)', opacity: 1}
+                ], {
+                    duration: 600
+                }) 
+            }
+        }
+    }
+})
 
-/*
-.menu-button div:first-child {
-    transform: translateY(11px) rotate(45deg);
-}
-
-.menu-button div:nth-child(2) {
-    visibility: hidden;
-}
-
-.menu-button div:last-child {
-    transform: translateY(-12px) rotate(-45deg);
-}
-*/
+observer.observe(document.querySelector('.phase1'))
+observer.observe(document.querySelector('.phase2'))
+observer.observe(document.querySelector('.phase3'))
 
 for(let i = 0; i < links.length; i++) {
         links[i].addEventListener("click", () => {

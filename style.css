@@ -180,6 +180,21 @@ main {
     padding: 2rem;
 }
 
+#experience {
+    height: calc(100vh - 200px);
+}
+
+#experience h1{
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 2rem;
+}
+
+#experience ul {
+    color: white;
+}
+
 .timeline {
     flex: 1;
     display: grid;
@@ -221,6 +236,7 @@ main {
 }
 
 .timeline ul:first-child {
+    position: relative;
     border-right: 5px solid black;
 }
 
