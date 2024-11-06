@@ -6,8 +6,8 @@ const links = menu.children;
 let observer = new IntersectionObserver(entries => {
     for(const entry of entries) {
         console.log(entry.isIntersecting)
-        if(entry.isIntersecting && entry) {
-            if(entry.target.className == "phase1") {
+        if(entry.isIntersecting) {
+            if(entry.target.className == "phase1" || entry.target.id == "exps") {
                 entry.target.animate([
                     {transform: 'translateX(500px)', opacity: 0},
                     {transform: 'translateX(0px)', opacity: 1}
@@ -15,7 +15,7 @@ let observer = new IntersectionObserver(entries => {
                     duration: 600
                 }) 
             }
-            else if(entry.target.className == "phase2") {
+            else if(entry.target.className == "phase2" || entry.target.id == "exp-img") {
                 entry.target.animate([
                     {transform: 'translateX(-500px)', opacity: 0},
                     {transform: 'translateX(0px)', opacity: 1}
@@ -38,6 +38,8 @@ let observer = new IntersectionObserver(entries => {
 observer.observe(document.querySelector('.phase1'))
 observer.observe(document.querySelector('.phase2'))
 observer.observe(document.querySelector('.phase3'))
+observer.observe(document.getElementById('exps'))
+observer.observe(document.getElementById('exp-img'))
 
 for(let i = 0; i < links.length; i++) {
         links[i].addEventListener("click", () => {
