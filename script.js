@@ -5,7 +5,6 @@ const links = menu.children;
 
 let observer = new IntersectionObserver(entries => {
     for(const entry of entries) {
-        console.log(entry.isIntersecting)
         if(entry.isIntersecting) {
             if(entry.target.className == "phase1" || entry.target.id == "exps") {
                 entry.target.animate([
@@ -73,3 +72,4 @@ function remove() {
     children[1].style.visibility = "visible"
     menu.style.top = "-1000px";
 }
+
